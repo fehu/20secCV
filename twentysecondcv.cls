@@ -1,4 +1,4 @@
-\ProvidesClass{twentysecondcv}[2015/02/28 CV class]
+\ProvidesClass{twentysecondcv}[2017/05/19 CV class]
 \LoadClass{article}
 \NeedsTeXFormat{LaTeX2e}
 
@@ -148,6 +148,7 @@
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
+\newcommand{\cvbirth}[1]{\renewcommand{\cvbirth}{#1}}
 \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
@@ -220,6 +221,13 @@
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{5cm}}
       \ifthenelse{\equal{\cvnumberphone}{}}{}{
+          {$
+              \begin{array}{l}
+              \hspace{2.5mm} \huge \textnormal{\textcolor{orange!80!black}{\faBirthdayCake}}
+              \end{array}
+              $}
+            & \cvbirth\\}
+      \ifthenelse{\equal{\cvnumberphone}{}}{}{
       		{$
               \begin{array}{l}
               \hspace{4mm} \Huge \textnormal{\faMobile}
@@ -245,7 +253,7 @@
               \begin{array}{l}
               \hspace{3mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
               \end{array}
-              $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
+              $} & \href{https://www.linkedin.com/in/\cvlinkedin}{\cvlinkedin} \\
             }
         \ifthenelse{\equal{\cvgithub}{}}{}{
             {$
