@@ -11,10 +11,11 @@
 
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
 
-\usepackage{pstricks}
+\newfontfamily{\FA}{FontAwesome.otf}
 
 \usepackage{fontawesome}
 \RequirePackage{tikz}
+\RequirePackage{pgf-pie}
 \RequirePackage{xcolor}
 \RequirePackage[absolute,overlay]{textpos}
 \RequirePackage{ragged2e}
@@ -24,6 +25,7 @@
 \RequirePackage{pgffor}
 \RequirePackage{marvosym}
 \RequirePackage{parskip}
+\RequirePackage{adjustbox}
 
 \usepackage{enumitem}
 \setlist[itemize]{leftmargin=*}
@@ -88,6 +90,8 @@
 \definecolor{materialred}{HTML}{FF4436}
 \definecolor{materialorange}{HTML}{FF5722}
 \definecolor{linkedin}{HTML}{0085AE}
+\definecolor{github}{HTML}{171515}
+\definecolor{skype}{HTML}{00A9F0}
 \definecolor{test}{HTML}{0077be}
 \definecolor{yt}{HTML}{c71610}
 
@@ -140,6 +144,7 @@
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
+\newcommand{\cvskype}[1]{\renewcommand{\cvskype}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
@@ -152,22 +157,37 @@
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
 % Command for printing skill progress bars
-\newcommand\programming[1]{ 
+\newcommand\programming[2]{
 	\renewcommand{\programming}{
-		\begin{tikzpicture}
-        	\node [above right] at (0, 4) {$0 \: LOC \: \arrow{3.2} \: 5000 \: LOC$};
-			\foreach [count=\i] \x/\y in {#1}{
-				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
-				\node [above right] at (0,\i+0.35) {\x};
-			}
-		\end{tikzpicture}
+    ~
+  	\tikz{
+  		\pie[before number=\phantom, after number=, text=inside]{#1}
+  	}
+  	~\phantom{a}\\
+  	#2
 	}
 }
-\newcommand\projects[1]{ 
-	\renewcommand{\projects}{
-		{#1}
-	}
+
+\newcommand\languages[1]{
+  \renewcommand{\languages}{
+    \gdef\langAcc{}
+    \foreach \q/\l in {#1} {
+      \xappto\langAcc{\q\ \underline{\l} \noexpand\\}
+    }
+    \marginbox{1em 0 0 0}{
+      {\Large
+       \begin{tabular}{l}\langAcc \end{tabular}
+      }
+    }
+  }
+}
+
+\newcommand\describeWork[3]{%
+  \begin{itemize}%
+    \item #1.
+    \item[] \underline{Technologies used:} #2.
+    \item[] \underline{Responsibilities:} #3.
+  \end{itemize}%
 }
 
 %----------------------------------------------------------------------------------------
@@ -184,82 +204,76 @@
   \begin{textblock}{6}(0.5, 0.2)
 
     %------------------------------------------------
-    
+
         \vspace{4mm}
     {\Huge\color{pblue}\cvname}
-    
+
     \vspace{2mm}
 
     %------------------------------------------------
-    
+
     {\Large\color{black!80}\cvjobtitle}
 
     %------------------------------------------------
-    
+
     \vspace{4mm}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{5cm}}
       \ifthenelse{\equal{\cvnumberphone}{}}{}{
       		{$
               \begin{array}{l}
-              \hspace{4mm} \Huge \textnormal{\faMobile} 
+              \hspace{4mm} \Huge \textnormal{\faMobile}
               \end{array}
-              $} 
+              $}
             & \cvnumberphone\\}
-            
-      \ifthenelse{\equal{\href{\cvsite}{\cvsite}}{}}{}{
+      \ifthenelse{\equal{\cvsite}{}}{}{
             {$
               \begin{array}{l}
               \hspace{2.8mm} \huge \textnormal{\textcolor{test}{\faGlobe}}
               \end{array}
-              $} 
+              $}
             & \href{http://\cvsite}{\cvsite} \\}
       \ifthenelse{\equal{\cvmail}{}}{}{
             {$
               \begin{array}{l}
               \hspace{2.5mm} \huge \textnormal{\textcolor{yt}{\faEnvelopeO}}
               \end{array}
-              $} 
+              $}
             & \href{mailto:\cvmail}{\cvmail} \\}
-      
        \ifthenelse{\equal{\cvlinkedin}{}}{}{
             {$
               \begin{array}{l}
               \hspace{3mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
               \end{array}
               $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
-            }  
+            }
         \ifthenelse{\equal{\cvgithub}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{3mm} \huge \textnormal{\faGithub}
+              \hspace{3mm} \huge \textnormal{\textcolor{github}{\faGithub}}
               \end{array}
               $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-            }   
-            
+            }
+        \ifthenelse{\equal{\cvskype}{}}{}{
+              {$
+                \begin{array}{l}
+                \hspace{3mm} \huge \textnormal{\textcolor{skype}{\faSkype}}
+                \end{array}
+                $}
+              & \cvskype}
     \end{tabular}
 
     %------------------------------------------------
     \vspace{4mm}
-    \profilesection{Skills}{4cm}
-    
-    {\large \textbf{Overview}}
+    \profilesection{Languages}{2.4cm}
 
-	\skills
-        
-        %------------------------------------------------
-        
-        \vspace{3mm}
-       
-	 {\large \textbf{Programming}} 
+    \languages
 
-		 \programming
-         
-        \vspace{4mm}
-        \profilesection{Projects}{3cm} 
-        
-        \projects
-      
+    %------------------------------------------------
+    \vspace{3mm}
+    \profilesection{Programming}{1.5cm}
+    \programming
+
   \end{textblock}
 }
 
@@ -305,31 +319,21 @@
 \setlength{\tabcolsep}{0pt}
 
 % New environment for the long list
-\newenvironment{twenty}{%
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+\newenvironment{twenty}[1][\fill]{%
+  \begin{tabular*}{\textwidth}{@{\extracolsep{#1}}ll}
 }{%
 	\end{tabular*}
 }
 
-% \newcommand{\twentyitem}[5]{%
-% 	#1&\parbox[t]{0.83\textwidth}{%
-% 		\textbf{#2}% 
-% 		\hfill%
-% 		{\footnotesize#3}\\%
-%         \ifblank{#4}{}{#4 \\}
-% 		#5\vspace{\parsep}%
-% 	}\\
-% }
-
-\newcommand{\twentyitem}[6]{%
-	#1&\parbox[t]{0.83\textwidth}{%
-		\textbf{#3}% 
+\newcommand{\twentyitem}[7][0.83]{%
+	#2&\parbox[t]{#1\textwidth}{%
+		\textbf{#4}%
 		\hfill%
-		{\footnotesize#4}%
+		{\footnotesize#5}%
         }\\%
-    #2&\parbox[t]{0.83\textwidth}{%
-		\ifblank{#5}{}{#5 \\}
-		#6\vspace{\parsep}%
+    #3&\parbox[t]{#1\textwidth}{%
+		\ifblank{#6}{}{#6 \\}
+		#7\vspace{\parsep}%
 	}\\
 }
 
@@ -380,4 +384,3 @@
     % sets the opacity at which the bubble text is shown
     bubble text opacity = 1,
 }
-
