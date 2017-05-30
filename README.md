@@ -31,7 +31,15 @@ Additional sections (in the left column) may be defined by providing your own
 
 Command | Section | Contents Definition
 --- | --- | ---
-`\languageSection` | Languages | `\languages{Fluent/English, ...}`
+`\languageSection`    | Spoken Languages   | `\languages{Fluent/English, ...}`
+`\programmingSection` | Programming Skills | `\programming{50/C, ...}{extra info}`
+
+##### Helper commands
+
+Command | Description
+--- | ---
+`\describeJob` | describe your job with 3 arguments: 1. project description;
+                2. technologies used; 3. responsibilities.
 
 ## Build
 
