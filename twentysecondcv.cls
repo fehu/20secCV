@@ -1,4 +1,4 @@
-\ProvidesClass{twentysecondcv}[2017/05/19 CV class]
+\ProvidesClass{twentysecondcv}[2017/05/30 CV class]
 \LoadClass{article}
 \NeedsTeXFormat{LaTeX2e}
 
@@ -9,13 +9,10 @@
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans}
 
-\def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
-
 \newfontfamily{\FA}{FontAwesome.otf}
 
 \usepackage{fontawesome}
 \RequirePackage{tikz}
-\RequirePackage{pgf-pie}
 \RequirePackage{xcolor}
 \RequirePackage[absolute,overlay]{textpos}
 \RequirePackage{ragged2e}
@@ -144,36 +141,23 @@
 \newcommand{\profilesection}[2]{\vspace{8pt}{\color{black!80} \huge #1 \rule[0.15\baselineskip]{#2}{1pt}}}
 
 % Define custom commands for CV info
-\newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
-\newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
-\newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
-\newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
-\newcommand{\cvskype}[1]{\renewcommand{\cvskype}{#1}}
-\newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
-\newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
-\newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
-\newcommand{\cvbirth}[1]{\renewcommand{\cvbirth}{#1}}
-\newcommand{\cvcitizen}[1]{\renewcommand{\cvcitizen}{#1}}
-\newcommand{\cvmatrial}[1]{\renewcommand{\cvmatrial}{#1}}
-\newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
-\newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 
-% Command for printing the contact information icons
-\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
+\newcommand{\cvbirth}[1]{\renewcommand{\cvbirth}{#1}}
+\newcommand{\cvcitizen}[1]{\renewcommand{\cvcitizen}{#1}}
+\newcommand{\cvmatrial}[1]{\renewcommand{\cvmatrial}{#1}}
 
-% Command for printing skill progress bars
-\newcommand\programming[2]{
-	\renewcommand{\programming}{
-    ~
-  	\tikz{
-  		\pie[before number=\phantom, after number=, text=inside]{#1}
-  	}
-  	~\phantom{a}\\
-  	#2
-	}
-}
+\newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
+\newcommand{\cvskype}[1]{\renewcommand{\cvskype}{#1}}
+\newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
+
+\newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
+\newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
+\newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
+
+
+%----------------------------------------------------------------------------------------
 
 \newcommand\languages[1]{
   \renewcommand{\languages}{
@@ -189,16 +173,19 @@
   }
 }
 
-\newcommand\describeWork[3]{%
-  \begin{itemize}%
-    \item #1.
-    \item[] \underline{Technologies used:} #2.
-    \item[] \underline{Responsibilities:} #3.
-  \end{itemize}%
-}
-
 %----------------------------------------------------------------------------------------
 %  SIDEBAR LAYOUT
+%----------------------------------------------------------------------------------------
+
+\providecommand\customCVsections{}
+
+\newcommand\languageSection{
+  \vspace{4mm}
+  \profilesection{Languages}{2.4cm}
+
+  \languages
+}
+
 %----------------------------------------------------------------------------------------
 
 \newcommand{\makeprofile}{
@@ -292,15 +279,8 @@
     \end{tabular}
 
     %------------------------------------------------
-    \vspace{4mm}
-    \profilesection{Languages}{2.4cm}
 
-    \languages
-
-    %------------------------------------------------
-    \vspace{3mm}
-    \profilesection{Programming}{1.5cm}
-    \programming
+    \customCVsections
 
   \end{textblock}
 }
