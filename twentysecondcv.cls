@@ -94,6 +94,10 @@
 \definecolor{skype}{HTML}{00A9F0}
 \definecolor{test}{HTML}{0077be}
 \definecolor{yt}{HTML}{c71610}
+\colorlet{birthday}{orange!80!black}
+\colorlet{citizen}{black}
+\colorlet{matrial}{black}
+
 
 \ifdefined\@cv@print
   \colorlet{green}{gray}
@@ -149,6 +153,8 @@
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
 \newcommand{\cvbirth}[1]{\renewcommand{\cvbirth}{#1}}
+\newcommand{\cvcitizen}[1]{\renewcommand{\cvcitizen}{#1}}
+\newcommand{\cvmatrial}[1]{\renewcommand{\cvmatrial}{#1}}
 \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
@@ -223,10 +229,24 @@
       \ifthenelse{\equal{\cvnumberphone}{}}{}{
           {$
               \begin{array}{l}
-              \hspace{2.5mm} \huge \textnormal{\textcolor{orange!80!black}{\faBirthdayCake}}
+              \hspace{2.5mm} \huge \textnormal{\textcolor{birthday}{\faBirthdayCake}}
               \end{array}
               $}
             & \cvbirth\\}
+      \ifthenelse{\equal{\cvcitizen}{}}{}{
+          {$
+              \begin{array}{l}
+              \hspace{2.9mm} \huge \textnormal{\textcolor{citizen}{\faGlobe}}
+              \end{array}
+              $}
+            & \cvcitizen\ citizen\\}
+      \ifthenelse{\equal{\cvmatrial}{}}{}{
+          {$
+              \begin{array}{l}
+              \hspace{1.9mm} \huge \textnormal{\textcolor{matrial}{\faUserPlus}}
+              \end{array}
+              $}
+            & \cvmatrial\\}
       \ifthenelse{\equal{\cvnumberphone}{}}{}{
       		{$
               \begin{array}{l}
