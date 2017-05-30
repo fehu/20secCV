@@ -1,7 +1,6 @@
 # LaTeX resume template
 
-This is generalized CV template, based on
-[a LaTeX resume template, tailored for the recent graduate who aspires to be a Data Scientist/Engineer](https://github.com/opensorceror/Data-Engineer-Resume-LaTeX).
+This is IT version of [CV template](https://github.com/fehu/20secCV).
 
 ## Description
 
@@ -38,8 +37,7 @@ Command | Section | Contents Definition
 
 Command | Description
 --- | ---
-`\describeJob` | describe your job with 3 arguments: 1. project description;
-                2. technologies used; 3. responsibilities.
+`\describeJob` | describe your job with 3 arguments: 1. project description; 2. technologies used; 3. responsibilities.
 
 ## Build
 
