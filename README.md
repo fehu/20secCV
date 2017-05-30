@@ -3,6 +3,10 @@
 This is generalized CV template, based on
 [a LaTeX resume template, tailored for the recent graduate who aspires to be a Data Scientist/Engineer](https://github.com/opensorceror/Data-Engineer-Resume-LaTeX).
 
+## Other versions
+
+[**IT** version](https://github.com/fehu/20secCV/tree/IT) of the template.
+
 ## Description
 
 ##### Common CV fields:
