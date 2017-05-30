@@ -3,11 +3,7 @@
 This is generalized CV template, based on
 [a LaTeX resume template, tailored for the recent graduate who aspires to be a Data Scientist/Engineer](https://github.com/opensorceror/Data-Engineer-Resume-LaTeX).
 
-<object data="https://raw.githubusercontent.com/fehu/20secCV/master/template.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://raw.githubusercontent.com/fehu/20secCV/master/template.pdf">
-        This browser does not support PDFs. Please download the PDF to view it: <a href="https://raw.githubusercontent.com/fehu/20secCV/master/template.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+![PDF](https://raw.githubusercontent.com/fehu/20secCV/master/template.pdf)
 
 ## Other versions
 
