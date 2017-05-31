@@ -2,6 +2,8 @@
 
 This is IT version of [CV template](https://github.com/fehu/20secCV).
 
+![Example](template-IT.png)
+
 ## Description
 
 ##### Common CV fields:
