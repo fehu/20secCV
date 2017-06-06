@@ -4,6 +4,12 @@ This is IT version of [CV template](https://github.com/fehu/20secCV).
 
 ![Example](template-IT.png)
 
+![Example](template.png)
+
+## Other versions
+
+[**IT** version](https://github.com/fehu/20secCV/tree/IT) of the template.
+
 ## Description
 
 ##### Common CV fields:
@@ -14,6 +20,7 @@ Command | Description
 `\cvjobtitle` | Job title
 `\cvbirth`    | Birth date
 `\cvcitizen`  | Citizenship
+`\cvresidence`| Place of residence
 `\cvmatrial`  | Martial status
 `\cvnumberphone` | Phone number
 `\cvskype`    | Skype name
