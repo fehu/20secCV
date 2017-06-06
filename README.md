@@ -19,6 +19,7 @@ Command | Description
 `\cvjobtitle` | Job title
 `\cvbirth`    | Birth date
 `\cvcitizen`  | Citizenship
+`\cvresidence`| Place of residence
 `\cvmatrial`  | Martial status
 `\cvnumberphone` | Phone number
 `\cvskype`    | Skype name

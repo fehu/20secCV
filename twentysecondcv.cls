@@ -94,6 +94,7 @@
 \colorlet{birthday}{orange!80!black}
 \colorlet{citizen}{black}
 \colorlet{matrial}{black}
+\colorlet{residence}{black}
 
 
 \ifdefined\@cv@print
@@ -146,6 +147,7 @@
 
 \newcommand{\cvbirth}[1]{\renewcommand{\cvbirth}{#1}}
 \newcommand{\cvcitizen}[1]{\renewcommand{\cvcitizen}{#1}}
+\newcommand{\cvresidence}[1]{\renewcommand{\cvresidence}{#1}}
 \newcommand{\cvmatrial}[1]{\renewcommand{\cvmatrial}{#1}}
 
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
@@ -227,6 +229,13 @@
               \end{array}
               $}
             & \cvcitizen\ citizen\\}
+      \ifthenelse{\equal{\cvresidence}{}}{}{
+          {$
+              \begin{array}{l}
+              \hspace{2.75mm} \huge \textnormal{\textcolor{residence}{\faHome}}
+              \end{array}
+              $}
+            & \cvresidence\\}
       \ifthenelse{\equal{\cvmatrial}{}}{}{
           {$
               \begin{array}{l}
