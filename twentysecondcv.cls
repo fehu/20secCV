@@ -215,7 +215,7 @@
     \vspace{4mm}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{5cm}}
-      \ifthenelse{\equal{\cvnumberphone}{}}{}{
+      \ifthenelse{\equal{\cvbirth}{}}{}{
           {$
               \begin{array}{l}
               \hspace{2.5mm} \huge \textnormal{\textcolor{birthday}{\faBirthdayCake}}
